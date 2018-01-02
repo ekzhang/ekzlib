@@ -2,15 +2,21 @@
 
 <div class="container-fluid">
   <div class="row h-100">
-    <div class="col-lg-3 p-4" style="overflow-y: auto;">
-      <h2>Implementations</h2>
-      <ul>
-        <a routerLink="/view/{{file.fileName}}" [routerLinkActive]="'active'" *ngFor="let file of files">
-          <li>{{file.title}}</li>
-        </a>
-      </ul>
+    <div class="col-3 p-0 files-list">
+      <form class="p-3" style="border-bottom: 1px solid lightgrey;">
+        <div class="form-group m-0">
+          <input [(ngModel)]="query" name="query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </div>
+      </form>
+      <div class="list-container">
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item" *ngFor="let file of files | search:'title,fileName':query">
+            <a class="nav-link" routerLink="/view/{{file.fileName}}" [routerLinkActive]="'active'">{{file.title}}</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="col-lg-9 p-4">
+    <div class="col-9 p-4">
       <router-outlet></router-outlet>
     </div>
   </div>

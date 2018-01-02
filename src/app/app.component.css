@@ -2,6 +2,12 @@
   height: calc(100% - 56px);
 }
 
-.active {
-  font-weight: bolder;
+.list-container {
+  overflow-y: auto;
+}
+
+.files-list {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgrey;
 }
