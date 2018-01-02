@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: sans-serif;
+}
+
+mat-toolbar {
+  z-index: 6;
+}
+
+.container {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  display: table-cell;
+  z-index: 2;
+  width: 30%;
+  padding: 20px;
+}
+
+.main-content {
+  display: table-cell;
+  width: 70%;
+  padding: 20px;
+  background: #fafafa;
+}

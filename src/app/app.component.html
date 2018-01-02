@@ -1,8 +1,17 @@
-<a href="/"><h1>ekzhang/library</h1></a>
-<h2>Implementations</h2>
-<ul>
-  <li *ngFor="let file of files">
-    <a routerLink="/view/{{file.fileName}}">{{file.title}}</a>
-  </li>
-</ul>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/">ekzhang/library</a>
+</mat-toolbar>
+
+<div class="container">
+  <div class="sidebar">
+    <h2>Implementations</h2>
+    <mat-nav-list>
+      <a routerLink="/view/{{file.fileName}}"*ngFor="let file of files">
+        <mat-list-item>{{file.title}}</mat-list-item>
+      </a>
+    </mat-nav-list>
+  </div>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
