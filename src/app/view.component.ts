@@ -9,7 +9,12 @@ declare var hljs: any;
 
 @Component({
   selector: 'app-view',
-  templateUrl: 'view.component.html'
+  templateUrl: 'view.component.html',
+  styles: [`
+    /*.code-viewer {
+      overflow-y: scroll;
+    }*/
+  `]
 })
 
 export class ViewComponent implements OnInit {
