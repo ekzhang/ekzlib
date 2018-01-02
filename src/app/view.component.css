@@ -1,0 +1,16 @@
+#editor {
+  height: 100%;
+}
+
+.card {
+  height: 100%;
+}
+
+.refresh-icon {
+  color: grey;
+}
+
+.refresh-icon:hover {
+  color: black;
+  cursor: pointer;
+}

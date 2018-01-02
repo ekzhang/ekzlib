@@ -5,23 +5,17 @@ import { Location } from '@angular/common';
 import { CodeService } from './code.service';
 import 'rxjs/add/operator/switchMap';
 
-declare var hljs: any;
+declare var ace: any;
 
 @Component({
   selector: 'app-view',
   templateUrl: 'view.component.html',
-  styles: [`
-    /*.code-viewer {
-      overflow-y: scroll;
-    }*/
-  `]
+  styleUrls: ['view.component.css']
 })
-
 export class ViewComponent implements OnInit {
   private fileName: string;
   private fileContents: string;
-  @ViewChild('code')
-  private codeElement: ElementRef;
+  private editor;
 
   constructor(
     private codeService: CodeService,
@@ -30,6 +24,13 @@ export class ViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.editor = ace.edit('editor');
+    this.editor.$blockScrolling = Infinity;
+    this.editor.setTheme('ace/theme/textmate');
+    this.editor.getSession().setMode('ace/mode/c_cpp');
+    this.editor.setShowPrintMargin(false);
+    // this.editor.setReadOnly(true);
+
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         this.fileName = params.get('file');
@@ -37,8 +38,14 @@ export class ViewComponent implements OnInit {
       })
       .subscribe(file => {
         this.fileContents = file;
-        this.codeElement.nativeElement.textContent = file;
-        hljs.highlightBlock(this.codeElement.nativeElement);
+        this.reset();
       });
+  }
+
+  reset() {
+    console.log(this.fileContents);
+    this.editor.setValue(this.fileContents);
+    this.editor.gotoLine(0);
+    this.editor.scrollToLine(0, false, true);
   }
 }

@@ -1,6 +1,4 @@
 <div class="card p-3">
-  <span>Viewing <b>{{fileName}}</b></span>
-  <div class="code-viewer">
-    <pre><code #code class="cpp"></code></pre>
-  </div>
+  <span>Viewing <b>{{fileName}}</b> <span (click)="reset()"><i class="fa fa-sync refresh-icon"></i></span></span>
+  <div id="editor">Loading...</div>
 </div>
