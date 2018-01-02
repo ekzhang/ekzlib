@@ -1,15 +1,15 @@
-<mat-toolbar color="primary">
+<div>
   <a mat-button routerLink="/">ekzhang/library</a>
-</mat-toolbar>
+</div>
 
 <div class="container">
   <div class="sidebar">
     <h2>Implementations</h2>
-    <mat-nav-list>
+    <ul>
       <a routerLink="/view/{{file.fileName}}"*ngFor="let file of files">
-        <mat-list-item>{{file.title}}</mat-list-item>
+        <li>{{file.title}}</li>
       </a>
-    </mat-nav-list>
+    </ul>
   </div>
   <div class="main-content">
     <router-outlet></router-outlet>
