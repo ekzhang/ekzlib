@@ -5,7 +5,7 @@
     <div class="col-lg-3 p-4">
       <h2>Implementations</h2>
       <ul>
-        <a routerLink="/view/{{file.fileName}}"*ngFor="let file of files">
+        <a routerLink="/view/{{file.fileName}}" [routerLinkActive]="'active'" *ngFor="let file of files">
           <li>{{file.title}}</li>
         </a>
       </ul>

@@ -1,4 +1,7 @@
 <div class="card p-3">
-  <span>Viewing <b>{{fileName}}</b> <span (click)="reset()"><i class="fa fa-sync refresh-icon"></i></span></span>
+  <span>Viewing <b>{{fileName}}</b>
+    <span (click)="reset()"><i class="fa fa-sync clickable-icon"></i></span>
+    <a href="/assets/library/{{fileName}}" download="{{fileName}}"><i class="fa fa-download clickable-icon"></i></a>
+  </span>
   <div id="editor">Loading...</div>
 </div>

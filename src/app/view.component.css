@@ -6,11 +6,11 @@
   height: 100%;
 }
 
-.refresh-icon {
+.clickable-icon {
   color: grey;
 }
 
-.refresh-icon:hover {
+.clickable-icon:hover {
   color: black;
   cursor: pointer;
 }

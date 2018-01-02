@@ -1,3 +1,7 @@
 .container-fluid {
   height: calc(100% - 56px);
 }
+
+.active {
+  font-weight: bolder;
+}
