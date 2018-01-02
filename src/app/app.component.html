@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
   <div class="row h-100">
-    <div class="col-lg-3 p-4">
+    <div class="col-lg-3 p-4" style="overflow-y: auto;">
       <h2>Implementations</h2>
       <ul>
         <a routerLink="/view/{{file.fileName}}" [routerLinkActive]="'active'" *ngFor="let file of files">
