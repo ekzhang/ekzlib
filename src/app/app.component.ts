@@ -8,7 +8,8 @@ import { CodeService } from './code.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private files;
+  public files;
+  public query;
 
   constructor(private codeService: CodeService) { }
 

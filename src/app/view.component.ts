@@ -13,7 +13,7 @@ declare var ace: any;
   styleUrls: ['view.component.css']
 })
 export class ViewComponent implements OnInit {
-  private fileName: string;
+  public fileName: string;
   private fileContents: string;
   private editor;
 
