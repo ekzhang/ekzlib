@@ -1,114 +1,114 @@
 [
   {
     "title": "Aho-Corasick Algorithm",
-    "fileName": "aho_corasick.cpp"
+    "name": "aho_corasick.cpp"
   },
   {
     "title": "Convex Hull Trick",
-    "fileName": "convex_hull_trick.cpp"
+    "name": "convex_hull_trick.cpp"
   },
   {
     "title": "Euler Tour",
-    "fileName": "euler_tour.cpp"
+    "name": "euler_tour.cpp"
   },
   {
     "title": "2D Sum Query with Fenwick Tree + Treap",
-    "fileName": "fentreap.cpp"
+    "name": "fentreap.cpp"
   },
   {
     "title": "2D Fenwick Tree",
-    "fileName": "fenwick_2d.cpp"
+    "name": "fenwick_2d.cpp"
   },
   {
     "title": "Fast Fourier Transform",
-    "fileName": "fft.cpp"
+    "name": "fft.cpp"
   },
   {
     "title": "Graham Scan for Convex Hull",
-    "fileName": "graham_scan.cpp"
+    "name": "graham_scan.cpp"
   },
   {
     "title": "String Hashing",
-    "fileName": "hashing.cpp"
+    "name": "hashing.cpp"
   },
   {
     "title": "Dynamic String Hashing",
-    "fileName": "hashing_bit.cpp"
+    "name": "hashing_bit.cpp"
   },
   {
     "title": "Heavy-Light Decomposition + Euler Tour for Max Query",
-    "fileName": "hld_euler_max.cpp"
+    "name": "hld_euler_max.cpp"
   },
   {
     "title": "Heavy-Light Decomposition + Euler Tour for Sum Query",
-    "fileName": "hld_euler_sum.cpp"
+    "name": "hld_euler_sum.cpp"
   },
   {
     "title": "Hopcroft-Karp Algorithm",
-    "fileName": "hopcroft_karp.cpp"
+    "name": "hopcroft_karp.cpp"
   },
   {
     "title": "Link-Cut Tree",
-    "fileName": "lct.cpp"
+    "name": "lct.cpp"
   },
   {
     "title": "Matrix",
-    "fileName": "matrix.cpp"
+    "name": "matrix.cpp"
   },
   {
     "title": "Dinic's Algorithm for Max Flow",
-    "fileName": "maxflow.cpp"
+    "name": "maxflow.cpp"
   },
   {
     "title": "SSP with Potentials for Min Cost Max Flow",
-    "fileName": "mincost_maxflow.cpp"
+    "name": "mincost_maxflow.cpp"
   },
   {
     "title": "2D Max Query with Segment Tree + Treap",
-    "fileName": "segtreap.cpp"
+    "name": "segtreap.cpp"
   },
   {
     "title": "Segment Tree with Lazy Propagation",
-    "fileName": "segtree_lazy.cpp"
+    "name": "segtree_lazy.cpp"
   },
   {
     "title": "Persistent Segment Tree",
-    "fileName": "segtree_persistent.cpp"
+    "name": "segtree_persistent.cpp"
   },
   {
     "title": "Sparse 2D Segment Tree",
-    "fileName": "segtree_sparse.cpp"
+    "name": "segtree_sparse.cpp"
   },
   {
     "title": "Segment Tree",
-    "fileName": "segtree.cpp"
+    "name": "segtree.cpp"
   },
   {
     "title": "Shortest Path Faster Algorithm (SPFA)",
-    "fileName": "spfa.cpp"
+    "name": "spfa.cpp"
   },
   {
     "title": "Splay Tree",
-    "fileName": "splay_tree.cpp"
+    "name": "splay_tree.cpp"
   },
   {
     "title": "Suffix Array + LCP Array",
-    "fileName": "suffix_array.cpp"
+    "name": "suffix_array.cpp"
   },
   {
     "title": "Tarjan's Biconnected Components Algorithm",
-    "fileName": "tarjan_bcc.cpp"
+    "name": "tarjan_bcc.cpp"
   },
   {
     "title": "Tarjan's Strongly Connected Components Algorithm",
-    "fileName": "tarjan_scc.cpp"
+    "name": "tarjan_scc.cpp"
   },
   {
     "title": "Treap",
-    "fileName": "treap.cpp"
+    "name": "treap.cpp"
   },
   {
     "title": "Z Algorithm",
-    "fileName": "z_algorithm.cpp"
+    "name": "z_algorithm.cpp"
   }
 ]

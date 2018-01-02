@@ -10,8 +10,8 @@
       </form>
       <div class="list-container">
         <ul class="nav nav-pills flex-column">
-          <li class="nav-item" *ngFor="let file of files | search:'title,fileName':query">
-            <a class="nav-link" routerLink="/view/{{file.fileName}}" [routerLinkActive]="'active'">{{file.title}}</a>
+          <li class="nav-item" *ngFor="let file of files | search:'title,name':query">
+            <a class="nav-link" routerLink="/view/{{file.name}}" [routerLinkActive]="'active'">{{file.title}}</a>
           </li>
         </ul>
       </div>

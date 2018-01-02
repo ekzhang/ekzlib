@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { CodeService } from './code.service';
+import { File } from './file';
 import 'rxjs/add/operator/switchMap';
 
 declare var ace: any;
@@ -13,8 +14,7 @@ declare var ace: any;
   styleUrls: ['view.component.css']
 })
 export class ViewComponent implements OnInit {
-  public fileName: string;
-  private fileContents: string;
+  public file: File;
   private editor;
 
   constructor(
@@ -33,18 +33,17 @@ export class ViewComponent implements OnInit {
 
     this.route.paramMap
       .switchMap((params: ParamMap) => {
-        this.fileName = params.get('file');
-        return this.codeService.getFile(this.fileName);
+        const name = params.get('file');
+        return this.codeService.getFile(name);
       })
       .subscribe(file => {
-        this.fileContents = file;
+        this.file = file;
         this.reset();
       });
   }
 
   reset() {
-    console.log(this.fileContents);
-    this.editor.setValue(this.fileContents);
+    this.editor.setValue(this.file.contents);
     this.editor.gotoLine(0);
     this.editor.scrollToLine(0, false, true);
   }
