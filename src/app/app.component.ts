@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { CodeService } from './code.service';
 
-import 'rxjs/add/operator/switchMap';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,9 +10,7 @@ import 'rxjs/add/operator/switchMap';
 export class AppComponent implements OnInit {
   private files;
 
-  constructor(
-    private codeService: CodeService
-  ) { }
+  constructor(private codeService: CodeService) { }
 
   ngOnInit() {
     this.codeService.listFiles().then(files => this.files = files);
