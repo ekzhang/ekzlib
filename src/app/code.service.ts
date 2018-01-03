@@ -4,14 +4,20 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { File } from './file';
+import { File, FileInfo } from './file';
 
 @Injectable()
 export class CodeService {
-  constructor(private http: Http) { }
-  listFiles() {
-    return this.http.get('/assets/library/files.json').toPromise().then(resp => JSON.parse(resp.text()));
+  private fileList: Promise<FileInfo[]>;
+
+  constructor(private http: Http) {
+    this.fileList = this.http.get('/assets/library/files.json').toPromise().then(resp => JSON.parse(resp.text()));
   }
+
+  listFiles(): Promise<FileInfo[]> {
+    return this.fileList;
+  }
+
   getFile(name: string): Promise<File> {
     const contents = this.http.get('/assets/library/' + name).toPromise();
     return Promise.all([contents, this.listFiles()]).then(resp => {
