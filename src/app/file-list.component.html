@@ -6,7 +6,7 @@
   </form>
   <div class="list-container">
     <ul class="nav flex-column">
-      <li class="nav-item" *ngFor="let file of files | search:['title','name']:query">
+      <li class="nav-item" *ngFor="let file of files | sort:'title' | search:['title','name']:query">
         <a class="nav-link" routerLink="/view/{{file.name}}" [routerLinkActive]="'active'">{{file.title}}</a>
       </li>
     </ul>

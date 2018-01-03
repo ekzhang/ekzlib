@@ -1,12 +1,24 @@
-<div class="card p-3">
-  <div *ngIf="file">
-    <h2>{{file.title}}</h2>
-    <span>Viewing <strong>{{file.name}}</strong>
-      <span (click)="reset()"><i class="fas fa-sync clickable-icon"></i></span>
-      <a href="/assets/library/{{file.name}}" download="{{file.name}}"><i class="fas fa-download clickable-icon"></i></a>
-    </span>
+<div class="row h-100">
+  <div class="d-none d-md-block col-md-4 col-lg-3 col-xl-2 p-0">
+    <app-file-list></app-file-list>
   </div>
-  <div class="editor-container">
-    <div id="editor">Loading...</div>
+  <div class="col-12 col-md-8 col-lg-9 col-xl-10 p-4">
+    <div class="card p-3">
+      <div *ngIf="file">
+        <h2>{{file.title}}</h2>
+        <span>Viewing
+          <strong>{{file.name}}</strong>
+          <span (click)="reset()">
+            <i class="fas fa-sync clickable-icon"></i>
+          </span>
+          <a href="/assets/library/{{file.name}}" download="{{file.name}}">
+            <i class="fas fa-download clickable-icon"></i>
+          </a>
+        </span>
+      </div>
+      <div class="editor-container">
+        <div id="editor"></div>
+      </div>
+    </div>
   </div>
 </div>
