@@ -2,16 +2,16 @@
   <h2>Contribute Code</h2>
   <form (ngSubmit)="submit()">
     <div class="form-group">
-      <label for="sender">Your Name</label>
-      <input type="text" class="form-control" [(ngModel)]="sender" name="sender" id="sender" placeholder="Name" required>
+      <label for="sender">Your Name (for credit)</label>
+      <input type="text" class="form-control" [(ngModel)]="sender" name="sender" id="sender" placeholder="John Smith" required>
     </div>
     <div class="form-group">
-      <label for="title">Title of Program</label>
-      <input type="text" class="form-control" [(ngModel)]="file.title" name="title" id="title" placeholder="Title" required>
+      <label for="title">Title of Algorithm / Data Structure</label>
+      <input type="text" class="form-control" [(ngModel)]="file.title" name="title" id="title" placeholder="Binary Search" required>
     </div>
     <div class="form-group">
       <label for="name">Filename (including extension)</label>
-      <input type="text" class="form-control" [(ngModel)]="file.name" name="name" id="name" placeholder="Filename" required>
+      <input type="text" class="form-control" [(ngModel)]="file.name" name="name" id="name" placeholder="binary_search.cpp" required>
     </div>
     <div class="form-group">
       <label for="contents">Source Code</label>
