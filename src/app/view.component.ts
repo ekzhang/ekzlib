@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { CodeService } from './code.service';
+import { DownloadService } from './download.service';
 import { File } from './file';
 import 'rxjs/add/operator/switchMap';
 
@@ -20,7 +21,8 @@ export class ViewComponent implements OnInit {
   constructor(
     private codeService: CodeService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    public downloadService: DownloadService
   ) { }
 
   ngOnInit() {

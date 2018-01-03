@@ -8,11 +8,11 @@
         <h2>{{file.title}}</h2>
         <span>Viewing
           <strong>{{file.name}}</strong>
-          <span (click)="reset()">
-            <i class="fas fa-sync clickable-icon"></i>
-          </span>
-          <a href="/assets/library/{{file.name}}" download="{{file.name}}">
-            <i class="fas fa-download clickable-icon"></i>
+          <a href="javascript:void(0)" (click)="reset()">
+            <i class="fas fa-sync"></i>
+          </a>
+          <a href="javascript:void(0)" (click)="downloadService.download(file)">
+            <i class="fas fa-download"></i>
           </a>
         </span>
       </div>

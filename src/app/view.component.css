@@ -11,12 +11,3 @@
 .card {
   height: 100%;
 }
-
-.clickable-icon {
-  color: grey;
-}
-
-.clickable-icon:hover {
-  color: black;
-  cursor: pointer;
-}

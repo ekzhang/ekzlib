@@ -17,6 +17,7 @@ import { ContributeComponent } from './contribute.component';
 import { AdminComponent } from './admin.component';
 import { SortPipe } from './sort.pipe';
 import { AceEditorDirective } from './ace-editor.directive';
+import { DownloadService } from './download.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { AceEditorDirective } from './ace-editor.directive';
     NgbModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [CodeService],
+  providers: [CodeService, DownloadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
