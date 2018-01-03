@@ -2,21 +2,10 @@
 
 <div class="container-fluid">
   <div class="row h-100">
-    <div class="col-2 p-0 files-list">
-      <form class="p-3" style="border-bottom: 1px solid lightgrey;">
-        <div class="form-group m-0">
-          <input [(ngModel)]="query" name="query" class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
-        </div>
-      </form>
-      <div class="list-container">
-        <ul class="nav flex-column">
-          <li class="nav-item" *ngFor="let file of files | search:'title,name':query">
-            <a class="nav-link" routerLink="/view/{{file.name}}" [routerLinkActive]="'active'">{{file.title}}</a>
-          </li>
-        </ul>
-      </div>
+    <div class="d-none d-md-block col-md-4 col-lg-3 col-xl-2 p-0">
+      <app-file-list></app-file-list>
     </div>
-    <div class="col-10 p-4">
+    <div class="col-12 col-md-8 col-lg-9 col-xl-10 p-4">
       <router-outlet></router-outlet>
     </div>
   </div>

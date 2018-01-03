@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { CodeService } from './code.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +7,8 @@ import { CodeService } from './code.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public files;
-  public query;
 
-  constructor(private codeService: CodeService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.codeService.listFiles().then(files => this.files = files);
-  }
+  ngOnInit() { }
 }
