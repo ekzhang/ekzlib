@@ -14,8 +14,8 @@ declare var ace: any;
   styleUrls: ['view.component.css']
 })
 export class ViewComponent implements OnInit {
+  private _file: File;
   public file: File;
-  private editor;
 
   constructor(
     private codeService: CodeService,
@@ -24,29 +24,18 @@ export class ViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.editor = ace.edit('editor');
-    this.editor.setFontSize(14);
-    this.editor.setTheme('ace/theme/textmate');
-    this.editor.getSession().setMode('ace/mode/c_cpp');
-    this.editor.setShowPrintMargin(false);
-    this.editor.setOption('scrollPastEnd', 1.0);
-    // this.editor.setReadOnly(true);
-    this.editor.$blockScrolling = Infinity;
-
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         const name = params.get('file');
         return this.codeService.getFile(name);
       })
       .subscribe(file => {
-        this.file = file;
+        this._file = file;
         this.reset();
       });
   }
 
   reset() {
-    this.editor.setValue(this.file.contents);
-    this.editor.gotoLine(0);
-    this.editor.scrollToLine(0, false, true);
+    this.file = Object.assign({}, this._file);
   }
 }

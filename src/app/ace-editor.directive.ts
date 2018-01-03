@@ -1,6 +1,5 @@
 import { Directive, ElementRef, EventEmitter } from '@angular/core';
-import { Input } from '@angular/core';
-import { Output } from '@angular/core/src/metadata/directives';
+import { Input, Output } from '@angular/core';
 
 declare const ace: any;
 
@@ -10,10 +9,10 @@ declare const ace: any;
 export class AceEditorDirective {
 
   private editor;
-  private _readOnly;
-  private _theme;
-  private _mode;
-  private oldVal;
+  private _readOnly: boolean;
+  private _theme: string;
+  private _mode: string;
+  private oldVal: string;
 
   static get parameters() {
     return [[ElementRef]];
@@ -43,7 +42,11 @@ export class AceEditorDirective {
   }
 
   @Input()
-  set text(value) {
+  get text(): string {
+    return this.oldVal;
+  }
+
+  set text(value: string) {
     if (value === this.oldVal) {
       return;
     }
@@ -53,15 +56,9 @@ export class AceEditorDirective {
   }
 
   @Output()
-  public textChanged;
-
-  @Output()
-  public editorRef;
+  public textChange = new EventEmitter();
 
   constructor(elementRef) {
-    this.textChanged = new EventEmitter();
-    this.editorRef = new EventEmitter();
-
     const el = elementRef.nativeElement;
     el.classList.add('editor');
 
@@ -75,17 +72,13 @@ export class AceEditorDirective {
     this.mode = 'c_cpp';
     this.editor.$blockScrolling = Infinity;
 
-    setTimeout(() => {
-      this.editorRef.next(this.editor);
-    });
-
     this.editor.on('change', () => {
       const newVal = this.editor.getValue();
       if (newVal === this.oldVal) {
         return;
       }
       if (typeof this.oldVal !== 'undefined') {
-        this.textChanged.next(newVal);
+        this.textChange.next(newVal);
       }
       this.oldVal = newVal;
     });
