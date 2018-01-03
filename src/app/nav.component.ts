@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
   public isNavbarCollapsed;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
     this.isNavbarCollapsed = true;

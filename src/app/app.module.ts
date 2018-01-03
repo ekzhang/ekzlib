@@ -13,6 +13,7 @@ import { CodeService } from './code.service';
 import { NavComponent } from './nav.component';
 import { SearchPipe } from './search.pipe';
 import { FileListComponent } from './file-list.component';
+import { ContributeComponent } from './contribute.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FileListComponent } from './file-list.component';
     ViewComponent,
     NavComponent,
     FileListComponent,
+    ContributeComponent,
     SearchPipe
   ],
   imports: [

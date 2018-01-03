@@ -3,10 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { WelcomeComponent } from './welcome.component';
 import { ViewComponent } from './view.component';
+import { ContributeComponent } from './contribute.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent, pathMatch: 'full' },
-  { path: 'view/:file', component: ViewComponent }
+  { path: 'home', component: WelcomeComponent },
+  { path: 'view/:file', component: ViewComponent },
+  { path: 'contribute', component: ContributeComponent },
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
