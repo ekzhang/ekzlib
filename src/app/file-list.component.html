@@ -1,12 +1,12 @@
 <div class="files-list">
   <form class="p-3" style="border-bottom: 1px solid lightgrey;">
     <div class="form-group m-0">
-      <input [(ngModel)]="query" name="query" class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
+      <input [(ngModel)]="query" name="query" maxlength="32" class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
     </div>
   </form>
   <div class="list-container">
     <ul class="nav flex-column">
-      <li class="nav-item" *ngFor="let file of files | search:'title,name':query">
+      <li class="nav-item" *ngFor="let file of files | search:['title','name']:query">
         <a class="nav-link" routerLink="/view/{{file.name}}" [routerLinkActive]="'active'">{{file.title}}</a>
       </li>
     </ul>
