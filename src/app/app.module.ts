@@ -16,6 +16,7 @@ import { FileListComponent } from './file-list.component';
 import { ContributeComponent } from './contribute.component';
 import { AdminComponent } from './admin.component';
 import { SortPipe } from './sort.pipe';
+import { AceEditorDirective } from './ace-editor.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SortPipe } from './sort.pipe';
     ContributeComponent,
     SearchPipe,
     AdminComponent,
-    SortPipe
+    SortPipe,
+    AceEditorDirective
   ],
   imports: [
     BrowserModule,
