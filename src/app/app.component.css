@@ -11,3 +11,18 @@
   flex-direction: column;
   border-right: 1px solid lightgrey;
 }
+
+.nav-link {
+  font-size: 14px;
+  color: grey;
+}
+
+.nav-link:hover {
+  font-size: 14px;
+  color: black;
+}
+
+.nav-link.active {
+  color: black;
+  font-weight: 500;
+}

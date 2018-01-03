@@ -25,11 +25,13 @@ export class ViewComponent implements OnInit {
 
   ngOnInit() {
     this.editor = ace.edit('editor');
-    this.editor.$blockScrolling = Infinity;
+    this.editor.setFontSize(14);
     this.editor.setTheme('ace/theme/textmate');
     this.editor.getSession().setMode('ace/mode/c_cpp');
     this.editor.setShowPrintMargin(false);
+    this.editor.setOption('scrollPastEnd', 1.0);
     // this.editor.setReadOnly(true);
+    this.editor.$blockScrolling = Infinity;
 
     this.route.paramMap
       .switchMap((params: ParamMap) => {

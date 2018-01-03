@@ -1,3 +1,9 @@
+.editor-container {
+  height: 100%;
+  border: 1px solid lightgrey;
+  padding: 2px;
+}
+
 #editor {
   height: 100%;
 }
