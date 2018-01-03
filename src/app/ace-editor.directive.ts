@@ -58,7 +58,7 @@ export class AceEditorDirective {
   @Output()
   public textChange = new EventEmitter();
 
-  constructor(elementRef) {
+  constructor(elementRef: ElementRef) {
     const el = elementRef.nativeElement;
     el.classList.add('editor');
 
