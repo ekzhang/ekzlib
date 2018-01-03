@@ -7,7 +7,7 @@ var connect = function(callback) {
 
 connect((err, database) => {
   let db = database.db('ekzlib-db');
-  db.collection('contributions').drop();
+  // db.collection('contributions').drop();
   db.createCollection('contributions');
 });
 

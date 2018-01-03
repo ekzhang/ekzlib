@@ -14,6 +14,7 @@ import { NavComponent } from './nav.component';
 import { SearchPipe } from './search.pipe';
 import { FileListComponent } from './file-list.component';
 import { ContributeComponent } from './contribute.component';
+import { AdminComponent } from './admin.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ContributeComponent } from './contribute.component';
     NavComponent,
     FileListComponent,
     ContributeComponent,
-    SearchPipe
+    SearchPipe,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
