@@ -11,15 +11,28 @@ declare const swal: any;
   styleUrls: ['admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  public contribs;
+  public contribs: any[];
+  private password: string;
 
   constructor(private http: Http, public downloadService: DownloadService) { }
 
   ngOnInit() {
-    this.http.get('/api/contributions').toPromise().then((resp) => {
-      this.contribs = JSON.parse(resp.text());
-    }, (err) => {
-      console.error(err);
+    swal({
+      title: 'Log in.',
+      text: 'Please enter your password.',
+      content: 'input',
+      button: {
+        text: 'Log In',
+        closeModal: false
+      }
+    }).then(password => {
+      this.http.get('/api/contributions?password=' + password).toPromise().then((resp) => {
+        this.password = password;
+        this.contribs = JSON.parse(resp.text());
+        swal('Logged in', 'You have logged in to the admin page.', 'success');
+      }, (err) => {
+        swal('Incorrect password', 'Sorry, try again.', 'error');
+      });
     });
   }
 
@@ -38,10 +51,10 @@ export class AdminComponent implements OnInit {
   }
 
   remove(contrib) {
-    this.http.delete('/api/contributions/' + contrib._id).toPromise().then((resp) => {
+    this.http.delete(`/api/contributions/${contrib._id}?password=${this.password}`).toPromise().then((resp) => {
       this.contribs.splice(this.contribs.indexOf(contrib), 1);
     }, (err) => {
-      alert('An unknown error occured.');
+      swal('Error', 'An unknown error occured.', 'error');
     });
   }
 }

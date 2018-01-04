@@ -53,6 +53,9 @@ router.post('/contributions', (req, res) => {
 
 router.get('/contributions/:cid', (req, res) => {
   // console.log(req.params.cid);
+  if (!ObjectId.isValid(req.params.cid)) {
+    return res.status(400).send('Bad request.');
+  }
   Contributions.findOne({ _id: new ObjectId(req.params.cid) }, function (err, contrib) {
     if (err)
       return res.send(err);
@@ -62,6 +65,9 @@ router.get('/contributions/:cid', (req, res) => {
 
 router.delete('/contributions/:cid', (req, res) => {
   if (req.query.password === password) {
+    if (!ObjectId.isValid(req.params.cid)) {
+      return res.status(400).send('Bad request.');
+    }
     Contributions.remove({
       _id: new ObjectId(req.params.cid)
     }, (err, contrib) => {
