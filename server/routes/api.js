@@ -1,3 +1,5 @@
+const password = "ekzlib-admin";
+
 const express = require('express');
 const router = express.Router();
 
@@ -17,17 +19,36 @@ router.get('/', (req, res) => {
 });
 
 router.get('/contributions', (req, res) => {
-  Contributions.find().toArray((err, results) => {
-    res.status(200).json(results);
-  });
+  if (req.query.password === password) {
+    Contributions.find().toArray((err, results) => {
+      res.status(200).json(results);
+    });
+  }
+  else {
+    return res.status(403).send('Incorrect password.');
+  }
 });
 
 router.post('/contributions', (req, res) => {
-  Contributions.save(req.body, (err, result) => {
-    if (err) return console.log(err);
-    console.log('Saved to database: ' + JSON.stringify(req.body));
-    return res.status(200).json(req.body);
-  });
+  const obj = req.body;
+  if (obj.sender && obj.file && obj.file.title && obj.file.name && obj.file.contents) {
+    Contributions.save({
+      sender: obj.sender,
+      file: {
+        title: obj.file.title,
+        name: obj.file.name,
+        contents: obj.file.contents
+      },
+      createdAt: new Date()
+    }, (err, result) => {
+      if (err) return console.log(err);
+      // console.log('Saved to database: ' + JSON.stringify(obj));
+      return res.status(200).json(obj);
+    });
+  }
+  else {
+    return res.status(400).send('Bad request.');
+  }
 });
 
 router.get('/contributions/:cid', (req, res) => {
@@ -40,12 +61,17 @@ router.get('/contributions/:cid', (req, res) => {
 });
 
 router.delete('/contributions/:cid', (req, res) => {
-  Contributions.remove({
-    _id: new ObjectId(req.params.cid)
-  }, (err, contrib) => {
-    if (err) return res.send(err);
-    return res.send('ok');
-  });
+  if (req.query.password === password) {
+    Contributions.remove({
+      _id: new ObjectId(req.params.cid)
+    }, (err, contrib) => {
+      if (err) return res.send(err);
+      return res.send('ok');
+    });
+  }
+  else {
+    return res.status(403).send('Incorrect password.');
+  }
 });
 
 module.exports = router;
