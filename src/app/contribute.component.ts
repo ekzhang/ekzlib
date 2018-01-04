@@ -30,7 +30,7 @@ export class ContributeComponent implements OnInit {
     this.http.post('/api/contributions', {
       sender: this.sender, file: this.file
     }).toPromise().then((resp) => {
-      swal('Success!', 'Your contribution has been sent.', 'success');
+      swal('Thanks!', 'Your contribution has been sent.', 'success');
     }, (err) => {
       swal('An error occured.', 'Please contact ekzhang1@gmail.com with any relevant information.', 'error');
     });
