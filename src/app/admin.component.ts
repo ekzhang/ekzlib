@@ -28,7 +28,12 @@ export class AdminComponent implements OnInit {
     }).then(password => {
       this.http.get('/api/contributions?password=' + password).toPromise().then((resp) => {
         this.password = password;
-        this.contribs = JSON.parse(resp.text());
+        this.contribs = JSON.parse(resp.text(), (key, value) => {
+          if (key === 'createdAt') {
+            return new Date(value);
+          }
+          return value;
+        });
         swal('Logged in', 'You have logged in to the admin page.', 'success');
       }, (err) => {
         swal('Incorrect password', 'Sorry, try again.', 'error');

@@ -3,6 +3,7 @@
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
+        <th scope="col">Timestamp</th>
         <th scope="col">Submitter</th>
         <th scope="col">Title</th>
         <th scope="col">File</th>
@@ -11,6 +12,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let contrib of contribs">
+        <td>{{contrib.createdAt | date:'MMM d, yyyy, hh:mm a'}}</td>
         <td>{{contrib.sender}}</td>
         <td>{{contrib.file.title}}</td>
         <td>{{contrib.file.name}}
