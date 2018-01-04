@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { File } from './file';
 import { Http } from '@angular/http';
 
+declare const swal: any;
+
 @Component({
   selector: 'app-contribute',
   templateUrl: 'contribute.component.html'
 })
-
 export class ContributeComponent implements OnInit {
   public file: File;
   public sender: string;
@@ -23,15 +24,15 @@ export class ContributeComponent implements OnInit {
 
   submit() {
     if (!this.file.title || !this.file.name || !this.file.contents || !this.sender) {
-      alert('Error: Required input field not met');
+      swal('Missing input field', 'You need to fill out all parts of the form before submitting.', 'info');
       return;
     }
     this.http.post('/api/contributions', {
       sender: this.sender, file: this.file
     }).toPromise().then((resp) => {
-      alert('Success! Your contribution has been sent.');
+      swal('Success!', 'Your contribution has been sent.', 'success');
     }, (err) => {
-      alert('An error occured.');
+      swal('An error occured.', 'Please contact ekzhang1@gmail.com with any relevant information.', 'error');
     });
   }
 }

@@ -3,12 +3,13 @@ import { Http } from '@angular/http';
 import { File } from './file';
 import { DownloadService } from './download.service';
 
+declare const swal: any;
+
 @Component({
   selector: 'app-admin',
   templateUrl: 'admin.component.html',
   styleUrls: ['admin.component.css']
 })
-
 export class AdminComponent implements OnInit {
   public contribs;
 
@@ -19,6 +20,20 @@ export class AdminComponent implements OnInit {
       this.contribs = JSON.parse(resp.text());
     }, (err) => {
       console.error(err);
+    });
+  }
+
+  requestRemove(contrib) {
+    swal({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to recover this contribution once deleted.',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true
+    }).then((willDelete) => {
+      if (willDelete) {
+        this.remove(contrib);
+      }
     });
   }
 

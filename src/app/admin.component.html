@@ -1,23 +1,29 @@
 <div class="container-fluid p-4">
   <h2>Contributions</h2>
-  <div class="list-group">
-    <div *ngFor="let contrib of contribs" class="list-group-item">
-      <div class="row">
-        <span class="col-5">
-          {{contrib.sender}}
-        </span>
-        <span class="col-5">
-          {{contrib.file.title}}
-        </span>
-        <span class="col-2">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Submitter</th>
+        <th scope="col">Title</th>
+        <th scope="col">File</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contrib of contribs">
+        <td>{{contrib.sender}}</td>
+        <td>{{contrib.file.title}}</td>
+        <td>{{contrib.file.name}}
           <a href="javascript:void(0)" (click)="downloadService.download(contrib.file)">
             <i class="fas fa-download"></i>
           </a>
-          <a href="javascript:void(0)" (click)="remove(contrib)">
+        </td>
+        <td>
+          <a class="text-danger" href="javascript:void(0)" (click)="requestRemove(contrib)">
             <i class="fas fa-trash-alt"></i>
           </a>
-        </span>
-      </div>
-    </div>
-  </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
