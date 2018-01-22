@@ -8,7 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app/app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ViewComponent } from './view/view.component';
+import { FileBrowserComponent } from './file-browser/file-browser.component';
 import { CodeService } from './code.service';
 import { NavComponent } from './nav/nav.component';
 import { SearchPipe } from './search.pipe';
@@ -23,7 +23,7 @@ import { DownloadService } from './download.service';
   declarations: [
     AppComponent,
     WelcomeComponent,
-    ViewComponent,
+    FileBrowserComponent,
     NavComponent,
     FileListComponent,
     ContributeComponent,

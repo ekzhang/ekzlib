@@ -10,11 +10,11 @@ import 'rxjs/add/operator/switchMap';
 declare var ace: any;
 
 @Component({
-  selector: 'app-view',
-  templateUrl: 'view.component.html',
-  styleUrls: ['view.component.css']
+  selector: 'app-file-browser',
+  templateUrl: 'file-browser.component.html',
+  styleUrls: ['file-browser.component.css']
 })
-export class ViewComponent implements OnInit {
+export class FileBrowserComponent implements OnInit {
   private _file: File;
   public file: File;
 
