@@ -2,9 +2,9 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { CodeService } from './code.service';
-import { DownloadService } from './download.service';
-import { File } from './file';
+import { CodeService } from '../code.service';
+import { DownloadService } from '../download.service';
+import { File } from '../file';
 import 'rxjs/add/operator/switchMap';
 
 declare var ace: any;

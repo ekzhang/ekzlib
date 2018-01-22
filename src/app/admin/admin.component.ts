@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { File } from './file';
-import { DownloadService } from './download.service';
+import { File } from '../file';
+import { DownloadService } from '../download.service';
 
 declare const swal: any;
 

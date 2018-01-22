@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { File } from './file';
+import { File } from '../file';
 import { Http } from '@angular/http';
 
 declare const swal: any;
