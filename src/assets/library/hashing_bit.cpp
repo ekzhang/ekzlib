@@ -79,7 +79,7 @@ struct hsh_bit {
 		return ret;
 	}
 
-	pll set(int i, char c) {
+	void set(int i, char c) {
 		int d = (MOD + c - S[i]) % MOD;
 		S[i] = c;
 		upd(i, d);
