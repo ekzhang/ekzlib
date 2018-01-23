@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-declare const Fuse: any;
+import * as Fuse from 'fuse.js';
 
 @Pipe({
   name: 'search'
