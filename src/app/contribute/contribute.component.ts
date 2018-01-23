@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { File } from '../file';
 import { Http } from '@angular/http';
 
-declare const swal: any;
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contribute',

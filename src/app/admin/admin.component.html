@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let contrib of contribs">
-        <td>{{contrib.createdAt | date:'MMM d, yyyy, hh:mm a'}}</td>
+        <td>{{contrib.createdAt | date:'MMM d, yyyy, h:mm a'}}</td>
         <td>{{contrib.sender}}</td>
         <td>{{contrib.file.title}}</td>
         <td>{{contrib.file.name}}

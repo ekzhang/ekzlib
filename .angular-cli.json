@@ -22,8 +22,7 @@
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/fuse.js/dist/fuse.min.js",
-        "../node_modules/sweetalert/dist/sweetalert.min.js"
+        "../node_modules/fuse.js/dist/fuse.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

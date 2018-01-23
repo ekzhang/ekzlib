@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { File } from '../file';
 import { DownloadService } from '../download.service';
 
-declare const swal: any;
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin',
@@ -17,27 +17,30 @@ export class AdminComponent implements OnInit {
   constructor(private http: Http, public downloadService: DownloadService) { }
 
   ngOnInit() {
-    swal({
-      title: 'Log in.',
-      text: 'Please enter your password.',
-      content: 'input',
-      button: {
-        text: 'Log In',
-        closeModal: false
+    this.login();
+  }
+
+  async login() {
+    const { value: password } = await swal({
+      title: 'Admin Login',
+      input: 'password',
+      inputPlaceholder: 'Enter your password',
+      inputAttributes: {
+        'autocapitalize': 'off',
+        'autocorrect': 'off'
       }
-    }).then(password => {
-      this.http.get('/api/contributions?password=' + password).toPromise().then((resp) => {
-        this.password = password;
-        this.contribs = JSON.parse(resp.text(), (key, value) => {
-          if (key === 'createdAt') {
-            return new Date(value);
-          }
-          return value;
-        });
-        swal('Logged in', 'You have logged in to the admin page.', 'success');
-      }, (err) => {
-        swal('Incorrect password', 'Sorry, try again.', 'error');
+    });
+    this.http.get('/api/contributions?password=' + password).toPromise().then((resp) => {
+      this.password = password;
+      this.contribs = JSON.parse(resp.text(), (key, value) => {
+        if (key === 'createdAt') {
+          return new Date(value);
+        }
+        return value;
       });
+      swal('Logged in', 'You have logged in to the admin page.', 'success');
+    }, (err) => {
+      swal('Incorrect password', 'Sorry, try again.', 'error');
     });
   }
 
@@ -45,11 +48,13 @@ export class AdminComponent implements OnInit {
     swal({
       title: 'Are you sure?',
       text: 'You won\'t be able to recover this contribution once deleted.',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true
-    }).then((willDelete) => {
-      if (willDelete) {
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(result => {
+      if (result.value) {
         this.remove(contrib);
       }
     });
