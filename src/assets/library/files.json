@@ -60,6 +60,10 @@
     "name": "maxflow.cpp"
   },
   {
+    "title": "Dinic's Algorithm v2 (without unordered_map)",
+    "name": "maxflow2.cpp"
+  },
+  {
     "title": "SSP with Potentials for Min Cost Max Flow",
     "name": "mincost_maxflow.cpp"
   },
