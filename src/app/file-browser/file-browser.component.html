@@ -3,7 +3,7 @@
     <app-file-list></app-file-list>
   </div>
   <div class="col-12 col-md-8 col-lg-9 col-xl-10 p-4">
-    <div class="card p-3">
+    <div class="d-flex flex-column h-100">
       <div *ngIf="file">
         <h2>{{file.title}}</h2>
         <span>Viewing
@@ -16,7 +16,7 @@
           </a>
         </span>
       </div>
-      <div class="editor-container">
+      <div class="card">
         <div *ngIf="file" appAceEditor [(text)]="file.contents"></div>
       </div>
     </div>
