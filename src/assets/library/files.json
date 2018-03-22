@@ -114,5 +114,9 @@
   {
     "title": "Z Algorithm",
     "name": "z_algorithm.cpp"
+  },
+  {
+    "title": "Wavelet Tree for K-th Order Statistics",
+    "name": "mkthnum.cpp"
   }
 ]
