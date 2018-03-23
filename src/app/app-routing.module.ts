@@ -6,7 +6,7 @@ import { FileBrowserComponent } from './file-browser/file-browser.component';
 import { ContributeComponent } from './contribute/contribute.component';
 import { AdminComponent } from './admin/admin.component';
 import { FileListComponent } from './file-list/file-list.component';
-import { FileListStandaloneComponent } from './file-list-standalone/file-list-standalone';
+import { FileListStandaloneComponent } from './file-list-standalone/file-list-standalone.component';
 
 const routes: Routes = [
   { path: 'home', component: WelcomeComponent },

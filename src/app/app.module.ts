@@ -13,7 +13,7 @@ import { CodeService } from './code.service';
 import { NavComponent } from './nav/nav.component';
 import { SearchPipe } from './search.pipe';
 import { FileListComponent } from './file-list/file-list.component';
-import { FileListStandaloneComponent } from './file-list-standalone/file-list-standalone';
+import { FileListStandaloneComponent } from './file-list-standalone/file-list-standalone.component';
 import { ContributeComponent } from './contribute/contribute.component';
 import { AdminComponent } from './admin/admin.component';
 import { SortPipe } from './sort.pipe';
