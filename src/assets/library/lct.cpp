@@ -15,7 +15,11 @@ struct node {
 
 	bool r() { return !p || (p->c[0] != this && p->c[1] != this); }
 	bool d() { assert(!r()); return p->c[1] == this; }
-	void update() { s = x + (c[0] ? c[0]->s : 0) + (c[1] ? c[1]->s : 0); }
+
+	void update() {
+		s = x + (c[0] ? c[0]->s : 0) + (c[1] ? c[1]->s : 0);
+	}
+
 	void push() {
 		if (flip) {
 			swap(c[0], c[1]);
