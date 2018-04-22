@@ -14,7 +14,7 @@ struct node {
 	bool flip;
 
 	bool r() { return !p || (p->c[0] != this && p->c[1] != this); }
-	bool d() { assert(!r()); return p->c[1] == this; }
+	int d() { return r() ? -1 : p->c[1] == this; }
 
 	void update() {
 		s = x + (c[0] ? c[0]->s : 0) + (c[1] ? c[1]->s : 0);
@@ -29,21 +29,20 @@ struct node {
 		}
 	}
 
+	static void connect(node* pa, node* ch, int dir) {
+		if (ch) ch->p = pa;
+		if (dir != -1) pa->c[dir] = ch;
+	}
+
 	void rot() {
 		assert(!r());
 
 		int x = d();
 		node* pa = p;
-		node* ch = c[!x];
 
-		if (!pa->r()) pa->p->c[pa->d()] = this;
-		this->p = pa->p;
-
-		pa->c[x] = ch;
-		if (ch) ch->p = pa;
-
-		this->c[!x] = pa;
-		pa->p = this;
+		connect(pa->p, this, pa->d());
+		connect(pa, c[!x], x);
+		connect(this, pa, !x);
 
 		pa->update();
 		update();
