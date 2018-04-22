@@ -63,14 +63,14 @@ struct node {
 	}
 
 	void expose() {
-		splay();
-		c[1] = nullptr;
-		update();
-		while (p) {
-			p->splay();
-			p->c[1] = this;
-			rot(); // includes update
+		node* pre = nullptr;
+		for (node* v = this; v; v = v->p) {
+			v->splay();
+			v->c[1] = pre;
+			update();
+			pre = v;
 		}
+		splay();
 	}
 
 	void make_root() {
