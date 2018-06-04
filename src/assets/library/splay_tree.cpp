@@ -8,19 +8,10 @@ struct node {
 	node* p;
 	node* c[2];
 	int x, s;
-	bool flip;
 
 	bool r() { return !p; }
 	int d() { return r() ? -1 : p->c[1] == this; }
 	void update() { s = 1 + (c[0] ? c[0]->s : 0) + (c[1] ? c[1]->s : 0); }
-	void push() {
-		if (flip) {
-			swap(c[0], c[1]);
-			if (c[0]) c[0]->flip ^= 1;
-			if (c[1]) c[1]->flip ^= 1;
-			flip = false;
-		}
-	}
 
 	static void connect(node* pa, node* ch, int dir) {
 		if (ch) ch->p = pa;
@@ -43,18 +34,12 @@ struct node {
 
 	void splay() {
 		while (!r() && !p->r()) {
-			p->p->push();
-			p->push();
-			push();
 			if (d() == p->d()) p->rot();
 			else rot();
 			rot();
 		}
-		if (!r()) {
-			p->push();
-			push();
+		if (!r())
 			rot();
-		}
 		push();
 	}
 } verts[100013];
