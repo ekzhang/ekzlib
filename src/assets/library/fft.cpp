@@ -4,8 +4,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const double PI = 4 * atan(1);
-
 template <typename T>
 struct Complex {
 	T real, imag;
@@ -22,8 +20,13 @@ struct Complex {
 		return *this * c.conj() / (c.x * c.x + c.y * c.y);
 	}
 };
-typedef Complex<double> ftype;
-typedef vector<int> poly;
+
+typedef int itype;
+typedef double dtype;
+
+typedef Complex<dtype> ftype;
+typedef vector<itype> poly;
+const dtype PI = 4 * atan((dtype) 1);
 
 void fft(ftype* A, int n, bool inv=false) {
 	for (int i = 1, j = n / 2; i + 1 < n; i++) {
