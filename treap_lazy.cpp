@@ -1,5 +1,5 @@
-// treap.cpp
-// Eric K. Zhang; Nov. 22, 2017
+// treap_lazy.cpp
+// Eric K. Zhang; Jul. 9, 2018
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -11,22 +11,37 @@ struct tnode {
 	/* Data */
 	int x;
 
+	/* Lazy */
+
 	/* Aggregate values */
 	int sz;
 
 	tnode() { update(); }
-	
-	void update() {
-		sz = 1 + (l ? l->sz : 0) + (r ? r->sz : 0);
+
+	void push() {
+		// Propagate lazy
 	}
 
-	void set(int x) { this->x = x; update(); }
+	void update() {
+		sz = 1;
+		if (l) {
+			l->push();
+			sz += l->sz;
+		}
+		if (r) {
+			r->push();
+			sz += r->sz;
+		}
+	}
+
+	void set(int x) { push(); this->x = x; update(); }
 
 } vals[100013];
 int mem = 0;
 
 void split(tnode* t, tnode*& l, tnode*& r, int k) {
 	if (!t) { l = r = nullptr; return; }
+	t->push();
 	if (t->x < k)
 		l = t, split(t->r, t->r, r, k);
 	else
@@ -36,6 +51,7 @@ void split(tnode* t, tnode*& l, tnode*& r, int k) {
 
 void split_at(tnode* t, tnode*& l, tnode*& r, int idx) {
 	if (!t) { l = r = nullptr; return; }
+	t->push();
 	int tidx = t->l ? t->l->sz : 0;
 	if (tidx < idx)
 		l = t, split_at(t->r, t->r, r, idx - tidx - 1);
@@ -47,9 +63,9 @@ void split_at(tnode* t, tnode*& l, tnode*& r, int idx) {
 void merge(tnode*& t, tnode* l, tnode* r) {
 	if (!l || !r) { t = l ? l : r; return; }
 	if (l->y < r->y)
-		t = l, merge(t->r, t->r, r);
+		t = l, t->push(), merge(t->r, t->r, r);
 	else
-		t = r, merge(t->l, l, t->l);
+		t = r, t->push(), merge(t->l, l, t->l);
 	t->update();
 }
 
@@ -71,6 +87,7 @@ void remove(tnode*& t, int x) {
 }
 
 tnode* find_by_order(tnode* t, int k) {
+	t->push();
 	int ls = t->l ? t->l->sz : 0;
 	if (k < ls) return find_by_order(t->l, k);
 	if (k == ls) return t;
