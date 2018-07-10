@@ -16,8 +16,8 @@
           </a>
         </span>
       </div>
-      <div class="card h-100">
-        <div *ngIf="file" appAceEditor [(text)]="file.contents"></div>
+      <div *ngIf="file" class="card h-100">
+        <div appAceEditor [(text)]="file.contents"></div>
       </div>
     </div>
   </div>

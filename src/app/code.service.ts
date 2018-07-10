@@ -18,16 +18,20 @@ export class CodeService {
     return this.fileList;
   }
 
-  getFile(name: string): Promise<File> {
-    const contents = this.http.get('/assets/library/' + name).toPromise();
-    return Promise.all([contents, this.listFiles()]).then(resp => {
-      let title = '';
-      for (const x of resp[1]) {
-        if (x.name === name) {
-          title = x.title;
-        }
+  async getFile(name: string): Promise<File> {
+    const files = await this.listFiles();
+    let title;
+    for (const info of files) {
+      if (info.name === name) {
+        title = info.title;
+        break;
       }
-      return { title, name, contents: resp[0].text() };
-    });
+    }
+    if (title === undefined) {
+      return null;
+    }
+    const request = this.http.get('/assets/library/' + name).toPromise();
+    const contents = (await request).text();
+    return { title, name, contents };
   }
 }

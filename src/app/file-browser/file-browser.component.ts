@@ -38,6 +38,10 @@ export class FileBrowserComponent implements OnInit {
   }
 
   reset() {
-    this.file = Object.assign({}, this._file);
+    if (this._file !== null) {
+      this.file = Object.assign({}, this._file);
+    } else {
+      this.file = null;
+    }
   }
 }
