@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { CodeService } from '../code.service';
 import { File } from '../file';
-import 'rxjs/add/operator/switchMap';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-external-browser',
@@ -19,16 +19,15 @@ export class ExternalBrowserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap
-      .switchMap(async (params: ParamMap) => {
-        let [ repo, name ] = params.get('file').split(',');
-        repo = decodeURIComponent(repo);
-        name = decodeURIComponent(name);
-        const title = name.substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.'));
-        return this.codeService.getFile({ name, title, repo });
-      })
-      .subscribe(file => {
-        this.file = file;
-      });
+    this.route.params.pipe(switchMap((params: Params) => {
+      let [repo, name] = params['file'].split(',');
+      repo = decodeURIComponent(repo);
+      name = decodeURIComponent(name);
+      const title = name.substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.'));
+      return this.codeService.getFile({ name, title, repo });
+    }))
+    .subscribe(file => {
+      this.file = file;
+    });
   }
 }

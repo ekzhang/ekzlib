@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { CodeService } from '../code.service';
 import { File } from '../file';
-import 'rxjs/add/operator/switchMap';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-file-browser',
@@ -19,18 +19,17 @@ export class FileBrowserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap
-      .switchMap(async (params: ParamMap) => {
-        const name = params.get('file');
-        const title = await this.codeService.getTitle(name);
-        return this.codeService.getFile({
-          name,
-          title,
-          repo: 'ekzhang/library'
-        });
-      })
-      .subscribe(file => {
-        this.file = file;
+    this.route.params.pipe(switchMap(async (params: Params) => {
+      const name = params['file'];
+      const title = await this.codeService.getTitle(name);
+      return this.codeService.getFile({
+        name,
+        title,
+        repo: 'ekzhang/library'
       });
+    }))
+    .subscribe(file => {
+      this.file = file;
+    });
   }
 }
