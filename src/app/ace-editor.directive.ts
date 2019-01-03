@@ -1,14 +1,15 @@
 import { Directive, ElementRef, EventEmitter } from '@angular/core';
 import { Input, Output } from '@angular/core';
-
-declare const ace: any;
+import * as ace from 'brace';
+import 'brace/mode/c_cpp';
+import 'brace/theme/textmate';
 
 @Directive({
   selector: '[appAceEditor]'
 })
 export class AceEditorDirective {
 
-  private editor;
+  private editor: ace.Editor;
   private oldVal: string;
 
   static get parameters() {
@@ -16,22 +17,22 @@ export class AceEditorDirective {
   }
 
   @Input()
-  set options(value) {
+  set options(value: object) {
     this.editor.setOptions(value || {});
   }
 
   @Input()
-  set readOnly(value) {
+  set readOnly(value: boolean) {
     this.editor.setReadOnly(value);
   }
 
   @Input()
-  set theme(value) {
+  set theme(value: string) {
     this.editor.setTheme(`ace/theme/${value}`);
   }
 
   @Input()
-  set mode(value) {
+  set mode(value: string) {
     this.editor.getSession().setMode(`ace/mode/${value}`);
   }
 
