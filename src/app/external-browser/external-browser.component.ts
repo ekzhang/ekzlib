@@ -6,11 +6,11 @@ import { File } from '../file';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
-  selector: 'app-file-browser',
-  templateUrl: 'file-browser.component.html',
+  selector: 'app-external-browser',
+  templateUrl: 'external-browser.component.html',
   styleUrls: []
 })
-export class FileBrowserComponent implements OnInit {
+export class ExternalBrowserComponent implements OnInit {
   public file: File;
 
   constructor(
@@ -21,13 +21,11 @@ export class FileBrowserComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .switchMap(async (params: ParamMap) => {
-        const name = params.get('file');
-        const title = await this.codeService.getTitle(name);
-        return this.codeService.getFile({
-          name,
-          title,
-          repo: 'ekzhang/library'
-        });
+        let [ repo, name ] = params.get('file').split(',');
+        repo = decodeURIComponent(repo);
+        name = decodeURIComponent(name);
+        const title = name.substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.'));
+        return this.codeService.getFile({ name, title, repo });
       })
       .subscribe(file => {
         this.file = file;

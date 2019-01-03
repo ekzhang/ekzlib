@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CodeService } from '../code.service';
+import { FileInfo } from '../file';
 
 @Component({
   selector: 'app-file-list',
@@ -8,8 +9,8 @@ import { CodeService } from '../code.service';
 })
 
 export class FileListComponent implements OnInit {
-  public files;
-  public query;
+  public files: FileInfo[];
+  public query: string;
 
   constructor(private codeService: CodeService) { }
 

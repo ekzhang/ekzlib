@@ -19,6 +19,10 @@ import { AdminComponent } from './admin/admin.component';
 import { SortPipe } from './sort.pipe';
 import { AceEditorDirective } from './ace-editor.directive';
 import { DownloadService } from './download.service';
+import { ExternalListComponent } from './external-list/external-list.component';
+import { ExternalListStandaloneComponent } from './external-list-standalone/external-list-standalone.component';
+import { ExternalBrowserComponent } from './external-browser/external-browser.component';
+import { FileViewComponent } from './file-view/file-view.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { DownloadService } from './download.service';
     SearchPipe,
     AdminComponent,
     SortPipe,
-    AceEditorDirective
+    AceEditorDirective,
+    ExternalListComponent,
+    ExternalListStandaloneComponent,
+    ExternalBrowserComponent,
+    FileViewComponent
   ],
   imports: [
     BrowserModule,

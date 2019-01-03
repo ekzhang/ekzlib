@@ -7,7 +7,7 @@ import * as Fuse from 'fuse.js';
 })
 export class SearchPipe implements PipeTransform {
   public transform(items, keys: string[], term: string) {
-    if (!term) {
+    if (!term || term.length < 2) {
       return items;
     }
     const options = {
