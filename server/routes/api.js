@@ -32,7 +32,7 @@ router.get('/contributions', (req, res) => {
 router.post('/contributions', (req, res) => {
   const obj = req.body;
   if (obj.sender && obj.file && obj.file.title && obj.file.name && obj.file.contents) {
-    Contributions.save({
+    Contributions.insertOne({
       sender: obj.sender,
       file: {
         title: obj.file.title,
@@ -68,7 +68,7 @@ router.delete('/contributions/:cid', (req, res) => {
     if (!ObjectId.isValid(req.params.cid)) {
       return res.status(400).send('Bad request.');
     }
-    Contributions.remove({
+    Contributions.deleteOne({
       _id: new ObjectId(req.params.cid)
     }, (err, contrib) => {
       if (err) return res.send(err);
