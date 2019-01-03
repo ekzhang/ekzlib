@@ -4,6 +4,10 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCode, faSync, faDownload, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import { AppComponent } from './app/app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -48,9 +52,14 @@ import { FileViewComponent } from './file-view/file-view.component';
     HttpModule,
     BrowserAnimationsModule,
     NgbModule.forRoot(),
+    FontAwesomeModule,
     AppRoutingModule
   ],
   providers: [CodeService, DownloadService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    library.add(faCode, faSync, faDownload, faTrashAlt, faGithub);
+  }
+}

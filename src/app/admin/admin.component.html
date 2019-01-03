@@ -17,12 +17,12 @@
         <td>{{contrib.file.title}}</td>
         <td>{{contrib.file.name}}
           <a href="javascript:void(0)" (click)="downloadService.download(contrib.file)">
-            <i class="fas fa-download"></i>
+            <fa-icon icon="download"></fa-icon>
           </a>
         </td>
         <td>
           <a class="text-danger" href="javascript:void(0)" (click)="requestRemove(contrib)">
-            <i class="fas fa-trash-alt"></i>
+            <fa-icon icon="trash-alt"></fa-icon>
           </a>
         </td>
       </tr>

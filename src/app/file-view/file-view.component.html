@@ -4,13 +4,13 @@
     <span>Viewing
       <strong>{{workingFile.name}}</strong>
       <a target="_blank" rel="noopener noreferrer" [href]="'https://github.com/' + workingFile.repo + '/blob/master/' + workingFile.name">
-        <i class="fab fa-github"></i>
+        <fa-icon [icon]="['fab', 'github']"></fa-icon>
       </a>
       <a href="javascript:void(0)" (click)="reset()">
-        <i class="fas fa-sync"></i>
+        <fa-icon icon="sync"></fa-icon>
       </a>
       <a href="javascript:void(0)" (click)="downloadService.download(workingFile)">
-        <i class="fas fa-download"></i>
+        <fa-icon icon="download"></fa-icon>
       </a>
     </span>
   </div>
