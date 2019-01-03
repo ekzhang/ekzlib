@@ -11,27 +11,36 @@ export class CodeService {
   private fileList: Promise<FileInfo[]>;
 
   constructor(private http: Http) {
-    this.fileList = this.http.get('/assets/library/files.json').toPromise().then(resp => JSON.parse(resp.text()));
+    const filesUrl = 'https://raw.githubusercontent.com/ekzhang/library/master/files.json';
+    this.fileList = this.http.get(filesUrl).toPromise().then(resp => {
+      const list = JSON.parse(resp.text());
+      for (const info of list) {
+        info.repo = 'ekzhang/library';
+      }
+      return list;
+    });
   }
 
   listFiles(): Promise<FileInfo[]> {
     return this.fileList;
   }
 
-  async getFile(name: string): Promise<File> {
-    const files = await this.listFiles();
-    let title;
-    for (const info of files) {
+  async getTitle(name: string): Promise<string> {
+    for (const info of await this.fileList) {
       if (info.name === name) {
-        title = info.title;
-        break;
+        return info.title;
       }
     }
-    if (title === undefined) {
-      return null;
-    }
-    const request = this.http.get('/assets/library/' + name).toPromise();
-    const contents = (await request).text();
-    return { title, name, contents };
+  }
+
+  async getFile(file: FileInfo): Promise<File> {
+    const url = `https://raw.githubusercontent.com/${file.repo}/master/${file.name}`;
+    const response = await this.http.get(url).toPromise();
+    return {
+      title: file.title,
+      name: file.name,
+      repo: file.repo,
+      contents: await response.text()
+    };
   }
 }

@@ -27,9 +27,14 @@ export class FileBrowserComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap
-      .switchMap((params: ParamMap) => {
+      .switchMap(async (params: ParamMap) => {
         const name = params.get('file');
-        return this.codeService.getFile(name);
+        const title = await this.codeService.getTitle(name);
+        return this.codeService.getFile({
+          name,
+          title,
+          repo: 'ekzhang/library'
+        });
       })
       .subscribe(file => {
         this._file = file;

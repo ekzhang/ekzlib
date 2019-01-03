@@ -16,7 +16,8 @@ export class ContributeComponent implements OnInit {
     this.file = {
       title: undefined,
       name: undefined,
-      contents: undefined
+      contents: undefined,
+      repo: null
     };
   }
 
