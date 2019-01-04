@@ -7,7 +7,8 @@ const EXTERNAL_REPOS = [
   'kth-competitive-programming/kactl',
   'indy256/codelibrary',
   'jaehyunp/stanfordacm',
-  't3nsor/codebook'
+  't3nsor/codebook',
+  'spaghetti-source/algorithm'
 ];
 
 const CPP_EXTENSIONS = ['.C', '.cc', '.cpp', '.cxx', '.c++', '.h', '.hh', '.hpp', '.hxx', '.h++'];
