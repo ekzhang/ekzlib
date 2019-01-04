@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { CodeService } from '../code.service';
+import { Component, Input } from '@angular/core';
 import { FileInfo } from '../file';
 
 @Component({
@@ -8,13 +7,14 @@ import { FileInfo } from '../file';
   styleUrls: ['./file-list.component.css']
 })
 
-export class FileListComponent implements OnInit {
+export class FileListComponent {
+  @Input()
   public files: FileInfo[];
+
+  @Input()
+  public external = false;
+
   public query: string;
 
-  constructor(private codeService: CodeService) { }
-
-  ngOnInit() {
-    this.codeService.listFiles().then(files => this.files = files);
-  }
+  public escape = encodeURIComponent;
 }

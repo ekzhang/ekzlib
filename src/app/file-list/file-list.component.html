@@ -7,7 +7,9 @@
   <div class="list-container">
     <ul class="nav flex-column">
       <li class="nav-item" *ngFor="let file of files | sort:'title' | search:['title','name']:query">
-        <a class="nav-link" routerLink="/view/{{file.name}}" [routerLinkActive]="'active'">{{file.title}}</a>
+        <a class="nav-link"
+          [routerLink]="(external ? '/external/' + escape(file.repo) + ',' : '/view/') + escape(file.name)"
+          [routerLinkActive]="'active'">{{file.title}}</a>
       </li>
     </ul>
   </div>

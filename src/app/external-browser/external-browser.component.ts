@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { CodeService } from '../code.service';
-import { File } from '../file';
+import { File, FileInfo } from '../file';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -12,6 +12,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class ExternalBrowserComponent implements OnInit {
   public file: File;
+  public fileList: FileInfo[];
 
   constructor(
     private codeService: CodeService,
@@ -19,7 +20,11 @@ export class ExternalBrowserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.pipe(switchMap((params: Params) => {
+    this.codeService.listExternals().then(files => this.fileList = files);
+    this.route.params.pipe(switchMap(async (params: Params) => {
+      if (!params['file']) {
+        return;
+      }
       let [repo, name] = params['file'].split(',');
       repo = decodeURIComponent(repo);
       name = decodeURIComponent(name);
