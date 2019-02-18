@@ -11,7 +11,7 @@
     "build-watch": "ng build --watch",
     "start-watch": "nodemon server.js --watch server.js --watch server/",
     "dev": "npm-run-all --parallel build-watch start-watch",
-    "postinstall": "ng build --prod",
+    "heroku-postbuild": "ng build --prod",
     "start": "node server.js"
   },
   "private": true,
