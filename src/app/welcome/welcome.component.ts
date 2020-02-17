@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CodeService } from '../code.service';
+import { FileInfo } from '../file';
+
 @Component({
   selector: 'app-welcome',
   templateUrl: 'welcome.component.html'
 })
 
 export class WelcomeComponent implements OnInit {
-  constructor() { }
+  public fileList: FileInfo[];
 
-  ngOnInit() { }
+  constructor(private codeService: CodeService) { }
+
+  async ngOnInit() {
+    this.fileList = await this.codeService.listFiles();
+  }
 }
