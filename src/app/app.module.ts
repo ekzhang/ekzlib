@@ -45,7 +45,7 @@ import { FileViewComponent } from './file-view/file-view.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgbModule.forRoot(),
+    NgbModule,
     FontAwesomeModule,
     AppRoutingModule
   ],
