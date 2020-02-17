@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { File } from '../file';
 import { DownloadService } from '../download.service';
 
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin',
@@ -21,7 +20,7 @@ export class AdminComponent implements OnInit {
   }
 
   async login() {
-    const { value: password } = await swal({
+    const { value: password } = await Swal.fire({
       title: 'Admin Login',
       input: 'password',
       inputPlaceholder: 'Enter your password',
@@ -40,17 +39,17 @@ export class AdminComponent implements OnInit {
           }
           return value;
         });
-        swal('Logged in', 'You have logged in to the admin page.', 'success');
+        Swal.fire('Logged in', 'You have logged in to the admin page.', 'success');
       }, err => {
-        swal('Incorrect password', 'Sorry, try again.', 'error');
+        Swal.fire('Incorrect password', 'Sorry, try again.', 'error');
       });
   }
 
   requestRemove(contrib) {
-    swal({
+    Swal.fire({
       title: 'Are you sure?',
       text: 'You won\'t be able to recover this contribution once deleted.',
-      type: 'warning',
+      icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
@@ -63,10 +62,13 @@ export class AdminComponent implements OnInit {
   }
 
   remove(contrib) {
-    this.http.delete(`/api/contributions/${contrib._id}?password=${this.password}`).toPromise().then((resp) => {
+    this.http.delete(
+      `/api/contributions/${contrib._id}?password=${this.password}`,
+      { responseType: 'text' }
+    ).toPromise().then((resp) => {
       this.contribs.splice(this.contribs.indexOf(contrib), 1);
     }, (err) => {
-      swal('Error', 'An unknown error occured.', 'error');
+      Swal.fire('Error', 'An unknown error occured.', 'error');
     });
   }
 }

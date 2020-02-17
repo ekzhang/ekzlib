@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { File } from '../file';
 import { HttpClient } from '@angular/common/http';
 
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contribute',
@@ -25,15 +25,15 @@ export class ContributeComponent implements OnInit {
 
   submit() {
     if (!this.file.title || !this.file.name || !this.file.contents || !this.sender) {
-      swal('Missing input field', 'You need to fill out all parts of the form before submitting.', 'info');
+      Swal.fire('Missing input field', 'You need to fill out all parts of the form before submitting.', 'info');
       return;
     }
     this.http.post('/api/contributions', {
       sender: this.sender, file: this.file
     }).toPromise().then((resp) => {
-      swal('Thanks!', 'Your contribution has been sent.', 'success');
+      Swal.fire('Thanks!', 'Your contribution has been sent.', 'success');
     }, (err) => {
-      swal('An error occured.', 'Please contact ekzhang1@gmail.com with any relevant information.', 'error');
+      Swal.fire('An error occured.', 'Please contact ekzhang1@gmail.com with any relevant information.', 'error');
     });
   }
 }

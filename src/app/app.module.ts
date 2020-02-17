@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCode, faSync, faDownload, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -53,7 +52,7 @@ import { FileViewComponent } from './file-view/file-view.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor() {
-    library.add(faCode, faSync, faDownload, faTrashAlt, faGithub);
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faCode, faSync, faDownload, faTrashAlt, faGithub);
   }
 }
