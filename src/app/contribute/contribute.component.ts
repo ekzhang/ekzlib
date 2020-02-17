@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { File } from '../file';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import swal from 'sweetalert2';
 
@@ -12,7 +12,7 @@ export class ContributeComponent implements OnInit {
   public file: File;
   public sender: string;
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
     this.file = {
       title: undefined,
       name: undefined,

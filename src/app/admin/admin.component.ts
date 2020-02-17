@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { File } from '../file';
 import { DownloadService } from '../download.service';
 
@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
   public contribs: any[];
   private password: string;
 
-  constructor(private http: Http, public downloadService: DownloadService) { }
+  constructor(private http: HttpClient, public downloadService: DownloadService) { }
 
   ngOnInit() {
     this.login();
@@ -30,18 +30,20 @@ export class AdminComponent implements OnInit {
         'autocorrect': 'off'
       }
     });
-    this.http.get('/api/contributions?password=' + password).toPromise().then((resp) => {
-      this.password = password;
-      this.contribs = JSON.parse(resp.text(), (key, value) => {
-        if (key === 'createdAt') {
-          return new Date(value);
-        }
-        return value;
+    this.http.get('/api/contributions?password=' + password, { responseType: 'text' })
+      .toPromise()
+      .then(resp => {
+        this.password = password;
+        this.contribs = JSON.parse(resp, (key, value) => {
+          if (key === 'createdAt') {
+            return new Date(value);
+          }
+          return value;
+        });
+        swal('Logged in', 'You have logged in to the admin page.', 'success');
+      }, err => {
+        swal('Incorrect password', 'Sorry, try again.', 'error');
       });
-      swal('Logged in', 'You have logged in to the admin page.', 'success');
-    }, (err) => {
-      swal('Incorrect password', 'Sorry, try again.', 'error');
-    });
   }
 
   requestRemove(contrib) {
