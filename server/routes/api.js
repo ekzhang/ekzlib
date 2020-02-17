@@ -1,4 +1,8 @@
-const password = "ekzlib-admin";
+const password = (
+  process.env.NODE_ENV === 'production'
+  ? process.env.ADMIN_PASSWORD
+  : 'ekzlib-admin'
+);
 
 const express = require('express');
 const router = express.Router();
@@ -8,9 +12,9 @@ const ObjectId = require('mongodb').ObjectID;
 
 /* GET api listing. */
 var db, Contributions;
-database.connect((err, _db) => {
+database.connect((err, client) => {
   if (err) return console.log(err);
-  db = _db.db('ekzlib-db');
+  db = client.db();
   Contributions = db.collection('contributions');
 });
 
@@ -42,7 +46,6 @@ router.post('/contributions', (req, res) => {
       createdAt: new Date()
     }, (err, result) => {
       if (err) return console.log(err);
-      // console.log('Saved to database: ' + JSON.stringify(obj));
       return res.status(200).json(obj);
     });
   }
@@ -52,7 +55,6 @@ router.post('/contributions', (req, res) => {
 });
 
 router.get('/contributions/:cid', (req, res) => {
-  // console.log(req.params.cid);
   if (!ObjectId.isValid(req.params.cid)) {
     return res.status(400).send('Bad request.');
   }

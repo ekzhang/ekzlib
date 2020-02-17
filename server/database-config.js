@@ -1,13 +1,17 @@
 const MongoClient = require('mongodb').MongoClient;
 
-const DATABASE_URI = 'mongodb://admin:bUW-5PR-pXm-xKC@ds239557.mlab.com:39557/ekzlib-db';
+const DATABASE_URI = (
+  process.env.NODE_ENV === 'production'
+  ? process.env.MONGODB_URI
+  : 'mongodb://localhost:27017/ekzlib-db'
+);
+
 var connect = function(callback) {
   MongoClient.connect(DATABASE_URI, { useNewUrlParser: true, useUnifiedTopology: true }, callback);
 }
 
-connect((err, database) => {
-  let db = database.db('ekzlib-db');
-  // db.collection('contributions').drop();
+connect((err, client) => {
+  let db = client.db();
   db.createCollection('contributions');
 });
 
