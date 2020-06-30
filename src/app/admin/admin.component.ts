@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
   }
 
   async login() {
-    const { value: password } = await Swal.fire({
+    const { value: password } = await Swal.fire<string>({
       title: 'Admin Login',
       input: 'password',
       inputPlaceholder: 'Enter your password',
