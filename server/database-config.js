@@ -12,7 +12,11 @@ var connect = function(callback) {
 
 connect((err, client) => {
   let db = client.db();
-  db.createCollection('contributions');
+  db.createCollection('contributions', (err) => {
+    if (err) {
+      console.log('Collection `contributions` already exists, skipping...');
+    }
+  });
 });
 
 module.exports.connect = connect;
