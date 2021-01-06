@@ -2,19 +2,19 @@
 
 This repository contains source code for the [ekzlib website](https://ekzlib.herokuapp.com).
 
-This uses a MEAN stack, with MongoDB, Express, Angular, and Node.
+This is a static site built with Angular.
 
 ## Building and Running
 
-Run the development server and hot-reload Angular:
+Run the development server:
 
 ```
-npm run dev
+npm start
 ```
 
-Build the client-side production bundle with Angular, and run the server:
+Build the client-side production bundle with Angular, and serve static files:
 
 ```
 ng build --prod
-npm start
+npx serve dist
 ```
