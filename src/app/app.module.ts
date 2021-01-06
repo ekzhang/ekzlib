@@ -16,8 +16,6 @@ import { CodeService } from './code.service';
 import { NavComponent } from './nav/nav.component';
 import { SearchPipe } from './search.pipe';
 import { FileListComponent } from './file-list/file-list.component';
-import { ContributeComponent } from './contribute/contribute.component';
-import { AdminComponent } from './admin/admin.component';
 import { SortPipe } from './sort.pipe';
 import { AceEditorDirective } from './ace-editor.directive';
 import { DownloadService } from './download.service';
@@ -31,9 +29,7 @@ import { FileViewComponent } from './file-view/file-view.component';
     FileBrowserComponent,
     NavComponent,
     FileListComponent,
-    ContributeComponent,
     SearchPipe,
-    AdminComponent,
     SortPipe,
     AceEditorDirective,
     ExternalBrowserComponent,
