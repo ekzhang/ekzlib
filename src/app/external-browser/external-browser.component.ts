@@ -17,22 +17,28 @@ export class ExternalBrowserComponent implements OnInit {
   constructor(
     private codeService: CodeService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.codeService.listExternals().then(files => this.fileList = files);
-    this.route.params.pipe(switchMap(async (params: Params) => {
-      if (!params['file']) {
-        return;
-      }
-      let [repo, name] = params['file'].split(',');
-      repo = decodeURIComponent(repo);
-      name = decodeURIComponent(name);
-      const title = name.substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.'));
-      return this.codeService.getFile({ name, title, repo });
-    }))
-    .subscribe(file => {
-      this.file = file;
-    });
+    this.codeService.listExternals().then((files) => (this.fileList = files));
+    this.route.params
+      .pipe(
+        switchMap(async (params: Params) => {
+          if (!params['file']) {
+            return;
+          }
+          let [repo, name] = params['file'].split(',');
+          repo = decodeURIComponent(repo);
+          name = decodeURIComponent(name);
+          const title = name.substring(
+            name.lastIndexOf('/') + 1,
+            name.lastIndexOf('.')
+          );
+          return this.codeService.getFile({ name, title, repo });
+        })
+      )
+      .subscribe((file) => {
+        this.file = file;
+      });
   }
 }

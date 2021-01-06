@@ -7,12 +7,11 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    window.addEventListener('load', function() {
-      setTimeout(function() {
+    window.addEventListener('load', function () {
+      setTimeout(function () {
         window.scrollTo(0, 1);
       }, 0);
     });

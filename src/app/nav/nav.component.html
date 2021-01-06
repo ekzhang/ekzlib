@@ -1,16 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" routerLink="/"><fa-icon icon="code"></fa-icon>&nbsp;&nbsp;ekzlib</a>
-  <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed">
+  <a class="navbar-brand" routerLink="/"
+    ><fa-icon icon="code"></fa-icon>&nbsp;&nbsp;ekzlib</a
+  >
+  <button
+    class="navbar-toggler navbar-toggler-right"
+    type="button"
+    (click)="isNavbarCollapsed = !isNavbarCollapsed"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div
+    [ngbCollapse]="isNavbarCollapsed"
+    class="collapse navbar-collapse"
+    id="navbarSupportedContent"
+  >
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [class.active]="router.isActive('/home', true)">
         <a class="nav-link" routerLink="/">Home</a>
       </li>
       <li class="nav-item" [class.active]="router.isActive('/view', false)">
-        <a class="nav-link" routerLink="/view">Algorithms and Data Structures</a>
+        <a class="nav-link" routerLink="/view"
+          >Algorithms and Data Structures</a
+        >
       </li>
       <li class="nav-item" [class.active]="router.isActive('/external', false)">
         <a class="nav-link" routerLink="/external">External Resources</a>

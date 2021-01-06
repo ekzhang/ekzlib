@@ -6,7 +6,6 @@ import { FileInfo } from '../file';
   templateUrl: 'file-list.component.html',
   styleUrls: ['./file-list.component.css']
 })
-
 export class FileListComponent {
   @Input()
   public files: FileInfo[];

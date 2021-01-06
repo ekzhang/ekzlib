@@ -21,7 +21,7 @@ export class FileViewComponent {
 
   public workingFile: File;
 
-  constructor(public downloadService: DownloadService) { }
+  constructor(public downloadService: DownloadService) {}
 
   reset() {
     if (this.file !== null) {

@@ -1,9 +1,9 @@
-const express = require("express");
+const express = require('express');
 
 const app = express();
 
 app.use((req, res) => {
-  res.redirect(301, "https://ekzlib.netlify.app" + req.path);
+  res.redirect(301, 'https://ekzlib.netlify.app' + req.path);
 });
 
 const port = process.env.PORT || 8080;

@@ -7,11 +7,10 @@ import { FileInfo } from '../file';
   selector: 'app-welcome',
   templateUrl: 'welcome.component.html'
 })
-
 export class WelcomeComponent implements OnInit {
   public fileList: FileInfo[];
 
-  constructor(private codeService: CodeService) { }
+  constructor(private codeService: CodeService) {}
 
   async ngOnInit() {
     this.fileList = await this.codeService.listFiles();

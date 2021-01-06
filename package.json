@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "format": "prettier --write ."
   },
   "private": true,
   "dependencies": {
@@ -42,6 +43,7 @@
     "@angular-devkit/build-angular": "^0.1100.5",
     "@angular/language-service": "^11.0.5",
     "codelyzer": "^6.0.1",
+    "prettier": "2.2.1",
     "ts-node": "^9.1.1",
     "tslint": "^6.1.3"
   },

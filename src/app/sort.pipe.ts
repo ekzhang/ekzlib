@@ -4,7 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'sort'
 })
 export class SortPipe implements PipeTransform {
-
   transform(items: any[], field: string): any[] {
     items = items || [];
     items.sort((a: any, b: any) => {
@@ -18,5 +17,4 @@ export class SortPipe implements PipeTransform {
     });
     return items;
   }
-
 }

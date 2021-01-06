@@ -17,24 +17,27 @@ export class FileBrowserComponent implements OnInit {
   constructor(
     private codeService: CodeService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.codeService.listFiles().then(files => this.fileList = files);
-    this.route.params.pipe(switchMap(async (params: Params) => {
-      const name = params['file'];
-      if (!name) {
-        return;
-      }
-      const title = await this.codeService.getTitle(name);
-      return this.codeService.getFile({
-        name,
-        title,
-        repo: 'ekzhang/library'
+    this.codeService.listFiles().then((files) => (this.fileList = files));
+    this.route.params
+      .pipe(
+        switchMap(async (params: Params) => {
+          const name = params['file'];
+          if (!name) {
+            return;
+          }
+          const title = await this.codeService.getTitle(name);
+          return this.codeService.getFile({
+            name,
+            title,
+            repo: 'ekzhang/library'
+          });
+        })
+      )
+      .subscribe((file) => {
+        this.file = file;
       });
-    }))
-    .subscribe(file => {
-      this.file = file;
-    });
   }
 }

@@ -1,15 +1,28 @@
 <div class="d-flex flex-column h-100" *ngIf="file">
   <div>
-    <h2>{{workingFile.title}}</h2>
-    <span>Viewing
-      <strong>{{workingFile.name}}</strong>
-      <a target="_blank" rel="noopener noreferrer" [href]="'https://github.com/' + workingFile.repo + '/blob/master/' + workingFile.name">
+    <h2>{{ workingFile.title }}</h2>
+    <span
+      >Viewing
+      <strong>{{ workingFile.name }}</strong>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        [href]="
+          'https://github.com/' +
+          workingFile.repo +
+          '/blob/master/' +
+          workingFile.name
+        "
+      >
         <fa-icon [icon]="['fab', 'github']"></fa-icon>
       </a>
       <a href="javascript:void(0)" (click)="reset()">
         <fa-icon icon="sync"></fa-icon>
       </a>
-      <a href="javascript:void(0)" (click)="downloadService.download(workingFile)">
+      <a
+        href="javascript:void(0)"
+        (click)="downloadService.download(workingFile)"
+      >
         <fa-icon icon="download"></fa-icon>
       </a>
     </span>

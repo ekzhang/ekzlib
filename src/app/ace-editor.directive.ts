@@ -8,7 +8,6 @@ import 'brace/theme/textmate';
   selector: '[appAceEditor]'
 })
 export class AceEditorDirective {
-
   private editor: ace.Editor;
   private oldVal: string;
 

@@ -8,16 +8,22 @@
     <div
       class="card mr-2 mb-2"
       style="width: 20rem"
-      *ngFor="let file of fileList | sort:'title'">
+      *ngFor="let file of fileList | sort: 'title'"
+    >
       <div class="card-body">
         <h6>{{ file.title }}</h6>
-        <p class="mb-2"><code>{{ file.name }}</code></p>
-        <a href="/view/{{ file.name }}" class="btn btn-sm btn-outline-primary">View</a>
+        <p class="mb-2">
+          <code>{{ file.name }}</code>
+        </p>
+        <a href="/view/{{ file.name }}" class="btn btn-sm btn-outline-primary"
+          >View</a
+        >
       </div>
     </div>
   </div>
   <p>
-    This site is maintained by <a href="https://www.ekzhang.com/">Eric Zhang</a>.
-    Contributions are welcome!
+    This site is maintained by
+    <a href="https://www.ekzhang.com/">Eric Zhang</a>. Contributions are
+    welcome!
   </p>
 </div>

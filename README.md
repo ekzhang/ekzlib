@@ -2,7 +2,7 @@
 
 This repository contains source code for the [ekzlib website](https://ekzlib.herokuapp.com).
 
-This is a static site built with Angular.
+This is a static site built with Angular and deployed on Netlify.
 
 ## Building and Running
 
@@ -16,5 +16,5 @@ Build the client-side production bundle with Angular, and serve static files:
 
 ```
 ng build --prod
-npx serve dist
+npx serve -s dist
 ```
