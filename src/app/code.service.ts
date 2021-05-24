@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { File, FileInfo } from './file';
 
 const EXTERNAL_REPOS = [
-  'kth-competitive-programming/kactl',
-  'indy256/codelibrary',
-  'jaehyunp/stanfordacm',
-  't3nsor/codebook',
-  'spaghetti-source/algorithm'
+  ['kth-competitive-programming/kactl', 'main'],
+  ['indy256/codelibrary', 'master'],
+  ['jaehyunp/stanfordacm', 'master'],
+  ['t3nsor/codebook', 'master'],
+  ['spaghetti-source/algorithm', 'master']
 ];
 
 const CPP_EXTENSIONS = [
@@ -48,8 +48,8 @@ export class CodeService {
 
   async listExternals(): Promise<FileInfo[]> {
     const trees = await Promise.all(
-      EXTERNAL_REPOS.map((repo) => {
-        const url = `https://api.github.com/repos/${repo}/git/trees/master?recursive=1`;
+      EXTERNAL_REPOS.map(([repo, ref]) => {
+        const url = `https://api.github.com/repos/${repo}/git/trees/${ref}?recursive=1`;
         return this.http.get<any>(url).toPromise();
       })
     );
@@ -63,7 +63,7 @@ export class CodeService {
             list.push({
               title: file.path.substring(file.path.lastIndexOf('/') + 1, idx),
               name: file.path,
-              repo: EXTERNAL_REPOS[i]
+              repo: EXTERNAL_REPOS[i][0]
             });
           }
         }
