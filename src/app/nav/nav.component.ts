@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['nav.component.css']
 })
 export class NavComponent implements OnInit {
-  public isNavbarCollapsed;
+  public isNavbarCollapsed: boolean;
 
   constructor(public router: Router) {}
 

@@ -6,11 +6,11 @@
   </p>
   <div class="d-flex flex-wrap">
     <div
-      class="card mr-2 mb-2"
+      class="card me-2 mb-2"
       style="width: 20rem"
       *ngFor="let file of fileList | sort: 'title'"
     >
-      <div class="card-body">
+      <div class="card-body m-1">
         <h6>{{ file.title }}</h6>
         <p class="mb-2">
           <code>{{ file.name }}</code>

@@ -1,3 +1,7 @@
 .navbar-toggler {
   cursor: pointer;
 }
+
+.nav-item.active .nav-link {
+  color: white;
+}
