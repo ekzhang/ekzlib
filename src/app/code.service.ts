@@ -5,7 +5,7 @@ import { File, FileInfo } from './file';
 
 const EXTERNAL_REPOS = [
   ['kth-competitive-programming/kactl', 'main'],
-  ['indy256/codelibrary', 'master'],
+  ['indy256/codelibrary', 'main'],
   ['jaehyunp/stanfordacm', 'master'],
   ['t3nsor/codebook', 'master'],
   ['spaghetti-source/algorithm', 'master']
@@ -47,12 +47,42 @@ export class CodeService {
   }
 
   async listExternals(): Promise<FileInfo[]> {
-    const trees = await Promise.all(
-      EXTERNAL_REPOS.map(([repo, ref]) => {
-        const url = `https://api.github.com/repos/${repo}/git/trees/${ref}?recursive=1`;
-        return this.http.get<any>(url).toPromise();
-      })
-    );
+    // We can use allSettled here if we had es2020 and these types are already implemented inside.
+    type FulfilledResult<T> = { status: "fulfilled"; value: T };
+    type RejectedResult = { status: "rejected"; reason: any };
+    type SettledResult<T> = FulfilledResult<T> | RejectedResult;
+
+    // Create all of the requests to all of the external repositories
+    const requests = EXTERNAL_REPOS.map(([repo, ref]): Promise<SettledResult<any>> => {
+      const url = `https://api.github.com/repos/${repo}/git/trees/${ref}?recursive=1`;
+      
+      return this.http.get<any>(url, { observe: "response" }).toPromise()
+      .then(response => {
+        if (response.status === 200) {
+          return { status: "fulfilled", value: response.body } as FulfilledResult<any>;
+        } else {
+            // We'll consider an error anything other than OK 200
+            throw new Error(`Request failed with status ${response.status}`);
+          }
+        })
+        .catch(error => ({ status: "rejected", reason: error }) as RejectedResult);
+    });
+    
+    // Get the trees
+    const responses: SettledResult<any>[] = await Promise.all(requests);
+    const trees = responses
+      .filter((response): response is FulfilledResult<any> => response.status === "fulfilled")
+      .map(response => response.value);
+    
+    // Check if there are any errors and report them to the console
+    const errors = responses
+      .filter((response): response is RejectedResult => response.status === "rejected")
+      .map(response => response.reason);
+    if (errors.length > 0) {
+      console.log("🔴 Errors when trying to fetch external repositories.");
+      console.log(errors);
+    }
+
     const list: FileInfo[] = [];
     for (let i = 0; i < trees.length; i++) {
       for (const file of trees[i].tree) {
