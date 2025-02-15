@@ -3,6 +3,7 @@ import { File } from '../file';
 import { DownloadService } from '../download.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
+import { AceEditorDirective } from '../ace-editor.directive';
 
 @Component({
   selector: 'app-file-view',
@@ -10,7 +11,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./file-view.component.css'],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AceEditorDirective
   ]
 })
 export class FileViewComponent {

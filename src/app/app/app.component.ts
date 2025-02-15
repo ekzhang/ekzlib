@@ -4,6 +4,9 @@ import { NavComponent } from 'app/nav/nav.component';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from 'app/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faCode, faSync, faDownload, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +22,13 @@ import { BrowserModule } from '@angular/platform-browser';
   ]
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, library: FaIconLibrary) {
+    library.addIcons(faCode, faSync, faDownload, faTrashAlt, faGithub);
+  }
 
   ngOnInit() {
-    this.router.navigate(['/home']);
+    // This line makes the router automatically navigate to the URL.
+    this.router.navigateByUrl(location.pathname);
     window.addEventListener('load', function () {
       setTimeout(function () {
         window.scrollTo(0, 1);
