@@ -5,7 +5,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component';
 import { ExternalBrowserComponent } from './external-browser/external-browser.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'home', component: WelcomeComponent },
   { path: 'view', redirectTo: 'view/' },
   { path: 'view/:file', component: FileBrowserComponent },
@@ -18,4 +18,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  ngOnDestroy() {}
+}

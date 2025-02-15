@@ -17,4 +17,6 @@ export class DownloadService {
     element.click();
     document.body.removeChild(element);
   }
+  
+  ngOnDestroy() {}
 }

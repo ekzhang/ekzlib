@@ -4,11 +4,19 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { CodeService } from '../code.service';
 import { File, FileInfo } from '../file';
 import { switchMap } from 'rxjs/operators';
+import { FileListComponent } from 'app/file-list/file-list.component';
+import { FileViewComponent } from 'app/file-view/file-view.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-file-browser',
   templateUrl: 'file-browser.component.html',
-  styleUrls: []
+  styleUrls: [],
+  imports: [
+    CommonModule,
+    FileListComponent,
+    FileViewComponent
+  ]
 })
 export class FileBrowserComponent implements OnInit {
   public file: File;
@@ -40,4 +48,6 @@ export class FileBrowserComponent implements OnInit {
         this.file = file;
       });
   }
+  
+  ngOnDestroy() {}
 }

@@ -71,4 +71,5 @@ export class AceEditorDirective {
       this.oldVal = newVal;
     });
   }
+  ngOnDestroy() {}
 }

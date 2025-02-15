@@ -1,11 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { File } from '../file';
 import { DownloadService } from '../download.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-file-view',
   templateUrl: './file-view.component.html',
-  styleUrls: ['./file-view.component.css']
+  styleUrls: ['./file-view.component.css'],
+  imports: [
+    CommonModule,
+    FontAwesomeModule
+  ]
 })
 export class FileViewComponent {
   private _file: File;
@@ -27,7 +33,9 @@ export class FileViewComponent {
     if (this.file !== null) {
       this.workingFile = Object.assign({}, this.file);
     } else {
-      this.workingFile = null;
+      (this.workingFile as any) = null;
     }
   }
+  
+  ngOnDestroy() {}
 }

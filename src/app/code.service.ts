@@ -122,4 +122,6 @@ export class CodeService {
       contents: response
     };
   }
+
+  ngOnDestroy() {}
 }
