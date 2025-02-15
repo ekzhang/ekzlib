@@ -5,7 +5,7 @@ import { File, FileInfo } from './file';
 
 const EXTERNAL_REPOS = [
   ['kth-competitive-programming/kactl', 'main'],
-  ['indy256/codelibrary', 'master'],
+  ['indy256/codelibrary', 'main'],
   ['jaehyunp/stanfordacm', 'master'],
   ['t3nsor/codebook', 'master'],
   ['spaghetti-source/algorithm', 'master']
