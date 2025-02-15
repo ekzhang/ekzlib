@@ -49,18 +49,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "library:build"
+            "buildTarget": "library:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "library:build:production"
+              "buildTarget": "library:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "library:build"
+            "buildTarget": "library:build"
           }
         },
         "lint": {
@@ -78,7 +78,6 @@
       "projectType": "application"
     }
   },
-  "defaultProject": "library",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
@@ -87,5 +86,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
