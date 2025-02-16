@@ -15,6 +15,6 @@ npm start
 Build the client-side production bundle with Angular, and serve static files:
 
 ```
-ng build --prod
+npm run build
 npx serve -s dist
 ```
